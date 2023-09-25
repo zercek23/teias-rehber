@@ -1,0 +1,61 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tableContent">
+
+  <ng-container matColumnDef="adi">
+    <th mat-header-cell *matHeaderCellDef> Ad </th>
+    <td mat-cell *matCellDef="let element"> {{element.adi}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="soyad">
+    <th mat-header-cell *matHeaderCellDef> Soyad </th>
+    <td mat-cell *matCellDef="let element"> {{element.soyad}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="baskanlikAdi">
+    <th mat-header-cell *matHeaderCellDef> Daire Başkanlığı </th>
+    <td mat-cell *matCellDef="let element"> {{element.baskanlikAdi}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="mudurlukadi">
+    <th mat-header-cell *matHeaderCellDef> Müdürlük </th>
+    <td mat-cell *matCellDef="let element"> {{element.mudurlukadi}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="unvan">
+    <th mat-header-cell *matHeaderCellDef> Unvan </th>
+    <td mat-cell *matCellDef="let element"> {{element.unvan}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="blok">
+    <th mat-header-cell *matHeaderCellDef> Blok </th>
+    <td mat-cell *matCellDef="let element"> {{element.blok}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="kat">
+    <th mat-header-cell *matHeaderCellDef> Kat </th>
+    <td mat-cell *matCellDef="let element"> {{element.kat}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="oda">
+    <th mat-header-cell *matHeaderCellDef> Oda </th>
+    <td mat-cell *matCellDef="let element"> {{element.oda}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dahili">
+    <th mat-header-cell *matHeaderCellDef> Dahili </th>
+    <td mat-cell *matCellDef="let element"> {{element.dahili}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="hariciTelefon1">
+    <th mat-header-cell *matHeaderCellDef> Harici Tel </th>
+    <td mat-cell *matCellDef="let element"> {{element.hariciTelefon1}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fax">
+    <th mat-header-cell *matHeaderCellDef> Fax </th>
+    <td mat-cell *matCellDef="let element"> {{element.fax}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

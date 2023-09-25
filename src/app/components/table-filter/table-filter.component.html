@@ -1,0 +1,61 @@
+<mat-card class="filterContent">
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field class="filterField">
+          <mat-label>
+            Başkanlık Seçiniz
+          </mat-label>
+          <mat-select>
+            <mat-option *ngFor="let baskan of baskanlik" [value]="baskan.value">
+              {{ baskan.text }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="filterField">
+          <mat-label>
+            Müdürlük Seçiniz
+          </mat-label>
+          <mat-select>
+            <mat-option *ngFor="let mudur of mudurluk" [value]="mudur.value">
+              {{ mudur.text }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="6" rowHeight="50px">
+      <mat-grid-tile>
+        <mat-form-field class="filterField">
+          <input matInput placeholder="Adınızı Giriniz">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="filterField">
+          <input matInput placeholder="Soyadınızı Giriniz">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="filterField">
+          <input matInput placeholder="Dahili">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="filterField">
+          <input matInput placeholder="Kat">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="filterField">
+          <input matInput placeholder="Oda">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-raised-button style="background-color: #369A05; color: white; margin: 0px 10px;">Ara</button>
+        <button mat-raised-button style="border: 1px solid #369A05">Temizle</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
