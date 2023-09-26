@@ -1,16 +1,16 @@
 export interface Kullanici {
-  adi: String,
-  baskanlikAdi: String,
-  blok: String,
-  dahili: Number,
-  fax: String,
-  hariciTelefon1: String,
-  kat: String,
-  mudurlukadi: String,
-  oda: String,
-  personelKodu: Number,
-  soyadi: String,
-  unvan: String
+  adi: string,
+  baskanlikAdi: string,
+  blok: string,
+  dahili: number,
+  fax: string,
+  hariciTelefon1: string,
+  kat: string,
+  mudurlukadi: string,
+  oda: string,
+  personelKodu: number,
+  soyadi: string,
+  unvan: string
 }
 
 export const DATA: Kullanici[] = [

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   tempTitle = 'Teiaş Rehber';
+
+  getItem(newItem: string) {
+    console.log('name: ', newItem)
+  }
 }

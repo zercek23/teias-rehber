@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() title: string = "";
+  @Output() newEvent = new EventEmitter<string>();
+  name: string = "Burak Bayram";
   // Component LifeCycle metod
 
   ngOnInit() {
     console.log('title: ', this.title)
+    this.newEvent.emit(this.name);
   }
 }
