@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Kullanici } from 'src/app/common/data';
-import { State } from 'src/app/components/table-filter/table-filter.component';
 import { UserService } from 'src/app/services/user.service';
+import { Kullanici } from 'src/app/models/types';
+import { State } from 'src/app/models/types';
 
 @Component({
   selector: 'app-telefon-rehberi',
@@ -22,6 +22,8 @@ export class TelefonRehberiComponent {
   }
   queryData: State = this.initialQueryData
   loading: boolean = true;
+  totalCount: number;
+
 
   constructor(private userService: UserService) {
     
@@ -31,6 +33,7 @@ export class TelefonRehberiComponent {
     this.loading = true;
     this.userService.getUsersWithQuery(this.queryData).subscribe((data) => {
       this.dataSource = data.rehberListesi;
+      this.totalCount = data.totalCount
       this.loading = false;
     })
   }
@@ -42,6 +45,7 @@ export class TelefonRehberiComponent {
     this.loading = true;
     this.userService.getUsersWithQuery(state).subscribe((data) => {
       this.dataSource = data.rehberListesi;
+      this.totalCount = data.totalCount
       this.loading = false;
     })
   }
@@ -49,8 +53,19 @@ export class TelefonRehberiComponent {
   filterFormClear(state: State) {
     this.queryData = this.initialQueryData
     this.loading = true;
-    this.userService.getUsersWithQuery(this.queryData).subscribe((data) => {
+    this.userService.getUsersWithQuery(this.queryData,).subscribe((data) => {
       this.dataSource = data.rehberListesi;
+      this.totalCount = data.totalCount
+      this.loading = false;
+    })
+  }
+
+  getData(pageIndex: number, pageSize: number, queryData: State) {
+    this.loading = true;
+    console.log('queryData', queryData)
+    this.userService.getUsersWithQuery(queryData, {page: pageIndex, pageSize}).subscribe((data) => {
+      this.dataSource = data.rehberListesi;
+      this.totalCount = data.totalCount
       this.loading = false;
     })
   }

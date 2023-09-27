@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DATA, Kullanici } from '../common/data';
 import { HttpClient } from '@angular/common/http';
-import { State } from '../components/table-filter/table-filter.component';
+import { State } from '../models/types';
+import { PaginatorOptions } from '../models/types';
+import { KullaniciResponse } from '../models/RehberServiceModels';
 
-interface KullaniciResponse {
-  rehberListesi: Kullanici[]
-}
 
 @Injectable({
   providedIn: 'root'
@@ -19,16 +17,8 @@ export class UserService {
   getUsers(): Observable<KullaniciResponse> {
     return this.http.get<KullaniciResponse>(this.apiUrl)
   }
-  getUsersWithQuery(queryData: State): Observable<KullaniciResponse> {
-    // structure ve destructre
-    const obj = {
-      name: 'burak',
-      surname: 'bayram',
-      age: 5
-    }
-    const { name, surname } = obj
-    //spread func ...
-    return this.http.get<KullaniciResponse>(this.apiUrl, {params: { page:0, pageSize:25, ...queryData}})
+  getUsersWithQuery(queryData: State, paginatorOptions?: PaginatorOptions): Observable<KullaniciResponse> {
+    return this.http.get<KullaniciResponse>(this.apiUrl, {params: { page: paginatorOptions ? paginatorOptions.page : 0 , pageSize: paginatorOptions ? paginatorOptions.pageSize : 25, ...queryData}})
   }
 }
 

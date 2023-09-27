@@ -5,8 +5,8 @@
         <mat-form-field class="filterField">
           <mat-label> Başkanlık Seçiniz </mat-label>
           <mat-select [(ngModel)]="state.baskanlik" (ngModelChange)="onStateChanged($event)">
-            <mat-option *ngFor="let baskan of baskanlik" [value]="baskan.value">
-              {{ baskan.text }}
+            <mat-option *ngFor="let baskan of baskanlik" [value]="baskan.baskanlikKodu">
+              {{ baskan.baskanlikAdi }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -15,8 +15,8 @@
         <mat-form-field class="filterField">
           <mat-label> Müdürlük Seçiniz </mat-label>
           <mat-select [(ngModel)]="state.mudurluk">
-            <mat-option *ngFor="let mudur of mudurluk" [value]="mudur.value">
-              {{ mudur.text }}
+            <mat-option *ngFor="let mudur of mudurluk" [value]="mudur.mudurlukKodu">
+              {{ mudur.mudurlukAdi }}
             </mat-option>
           </mat-select>
         </mat-form-field>

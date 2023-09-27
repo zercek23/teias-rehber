@@ -1,24 +1,16 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
-export interface State {
-  baskanlik?: string;
-  mudurluk?: string;
-  ad?: string;
-  soyadi?: string;
-  dahili?: string;
-  kat?: string;
-  oda?: string;
-}
-
-interface SelectInput {
-  value: string;
-  text: string;
-}
+import {
+  BaskanlikBilgileriResponse,
+  MudurlukBilgileriResponse,
+} from 'src/app/models/RehberServiceModels';
+import { State } from 'src/app/models/types';
+import { SelectInput } from 'src/app/models/types';
+import { ParametersService } from 'src/app/services/parameters.service';
 
 @Component({
   selector: 'app-table-filter',
   templateUrl: './table-filter.component.html',
-  styleUrls: ['./table-filter.component.css']
+  styleUrls: ['./table-filter.component.css'],
 })
 export class TableFilterComponent {
   state: State = {
@@ -29,18 +21,36 @@ export class TableFilterComponent {
     dahili: '',
     kat: '',
     oda: '',
-  }
+  };
+
+  constructor(private paramService: ParametersService) {}
 
   @Output() buttonClicked = new EventEmitter<State>();
   @Output() temizleButtonClicked = new EventEmitter<State>();
 
-  onStateChanged(event: string) {
-    console.log('event', event)
+  baskanlik: BaskanlikBilgileriResponse[] = [];
+
+  mudurluk: MudurlukBilgileriResponse[] = [];
+
+  ngOnInit() {
+    let baskanlikData: BaskanlikBilgileriResponse[] = [];
+    this.paramService.getBaskanlikBilgileri().subscribe((res) => {
+      this.baskanlik = res;
+      console.log('baskanlik data:', baskanlikData);
+    });
+  }
+
+  onStateChanged(event: number) {
+    console.log('event', event);
+    this.paramService.getMudurlukBilgileri(event).subscribe((mudurlukRes) => {
+      console.log('mudurluk:', mudurlukRes);
+      this.mudurluk = mudurlukRes
+    });
   }
 
   onAraButtonClick() {
-    console.log('state', this.state)
-    this.buttonClicked.emit(this.state)
+    console.log('state', this.state);
+    this.buttonClicked.emit(this.state);
   }
 
   onTemizleClick() {
@@ -52,19 +62,7 @@ export class TableFilterComponent {
       dahili: '',
       kat: '',
       oda: '',
-    }
-    this.temizleButtonClicked.emit(this.state)
+    };
+    this.temizleButtonClicked.emit(this.state);
   }
-
-  baskanlik: SelectInput[] = [
-    { value: 'a', text: 'A Başkanlık' },
-    { value: 'b', text: 'B Başkanlık' },
-    { value: 'c', text: 'C Başkanlık' }
-  ]
-
-  mudurluk: SelectInput[] = [
-    { value: 'a', text: 'A Müdürlük' },
-    { value: 'b', text: 'B Müdürlük' },
-    { value: 'c', text: 'C Müdürlük' }
-  ];
 }

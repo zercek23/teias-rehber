@@ -1,3 +1,6 @@
+<div class="centerLoading">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</div>
 <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8 tableContent">
 
   <ng-container matColumnDef="adi">
@@ -58,6 +61,12 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<div class="centerLoading">
-  <mat-spinner *ngIf="loading"></mat-spinner>
+<div style="margin: 10px 0px;">
+  <mat-paginator [length]="totalCount"
+  [pageSize]="25"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page">
+  </mat-paginator>
 </div>
+
+

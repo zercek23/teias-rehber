@@ -1,4 +1,4 @@
 <div style="padding: 20px;">
   <app-table-filter (buttonClicked)="getDataSourceWithQuery($event)" (temizleButtonClicked)="filterFormClear($event)"></app-table-filter>
-  <app-table [loading]="loading" [dataSource]="dataSource"></app-table>
+  <app-table [queryData]="queryData" [getData]="getData" [loading]="loading" [totalCount]="totalCount" [dataSource]="dataSource"></app-table>
 </div>
