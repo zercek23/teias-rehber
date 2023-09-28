@@ -7,24 +7,24 @@ import { RehberSecimComponent } from './screens/rehber-secim/rehber-secim.compon
 import { TelefonRehberiComponent } from './screens/telefon-rehberi/telefon-rehberi.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { TableComponent } from './components/table/table.component';
 import { TableFilterComponent } from './components/table-filter/table-filter.component';
 import { UnlessDirective } from './directives/unless.directive';
-import { MatTableModule } from '@angular/material/table'
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatCardModule} from '@angular/material/card';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgFor } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     HeaderComponent,
     TableComponent,
     TableFilterComponent,
-    UnlessDirective
+    UnlessDirective,
   ],
   imports: [
     BrowserModule,
@@ -53,9 +53,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NgFor,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
