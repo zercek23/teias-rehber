@@ -1,7 +1,7 @@
-import { Kullanici } from "./types";
+import { Kullanici } from './types';
 
 export interface KullaniciResponse {
-  rehberListesi: Kullanici[]
+  rehberListesi: Kullanici[];
   totalCount: number;
 }
 

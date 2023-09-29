@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   BaskanlikBilgileriResponse,
   MudurlukBilgileriResponse,
@@ -38,9 +38,12 @@ export class TableFilterComponent {
       mudurlukAdi: '',
       mudurlukKodu: 0,
     }),
-    ad: new FormControl(''),
-    soyadi: new FormControl(''),
-    dahili: new FormControl(''),
+    ad: new FormControl('', [Validators.minLength(2), Validators.maxLength(5)]),
+    soyadi: new FormControl('', [
+      Validators.minLength(2),
+      Validators.maxLength(3),
+    ]),
+    dahili: new FormControl('', [Validators.max(100)]),
     kat: new FormControl(''),
     oda: new FormControl(''),
   };
@@ -55,12 +58,18 @@ export class TableFilterComponent {
     });
   }
 
+  adChange() {
+    console.log('ad', this.filterForm.get('ad')?.errors);
+  }
+
   onStateChanged(event: any) {
     console.log('event', event);
-    this.paramService.getMudurlukBilgileri(event).subscribe((mudurlukRes) => {
-      console.log('mudurluk:', mudurlukRes);
-      this.mudurluk = mudurlukRes;
-    });
+    this.paramService
+      .getMudurlukBilgileri(event.option.value.baskanlikKodu)
+      .subscribe((mudurlukRes) => {
+        console.log('mudurluk:', mudurlukRes);
+        this.mudurluk = mudurlukRes;
+      });
   }
 
   onAraButtonClick() {

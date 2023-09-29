@@ -1,0 +1,100 @@
+<mat-card class="filterContent">
+  <mat-card-content>
+    <form [formGroup]="filterForm" (ngSubmit)="onAraButtonClick()">
+      <mat-grid-list cols="2" rowHeight="80px">
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <mat-label>Abone Yeri Seçiniz</mat-label>
+            <input
+              type="text"
+              placeholder="Abone Yeri Seçiniz"
+              matInput
+              [formControl]="filterFormElements.aboneTuru"
+              [matAutocomplete]="autoAbonelik"
+            />
+            <mat-autocomplete
+              #autoAbonelik="matAutocomplete"
+              (optionSelected)="onStateChanged($event)"
+              [displayWith]="displayFnAboneYeri"
+            >
+              <mat-option *ngFor="let aboneY of aboneYeri" [value]="aboneY">
+                {{ aboneY.aboneYeriAdi }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <mat-label>Transformatör Merkezi Seçiniz</mat-label>
+            <input
+              type="text"
+              placeholder="Transformatör Merkezi Seçiniz"
+              matInput
+              [formControl]="filterFormElements.anaUnite"
+              [matAutocomplete]="autoAnaUnite"
+            />
+            <mat-autocomplete
+              #autoAnaUnite="matAutocomplete"
+              [displayWith]="displayFnTransformatorMerkezi"
+            >
+              <mat-option *ngFor="let tM of transformatorMerkezi" [value]="tM">
+                {{ tM.transformatorMerkeziAdi }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="6" rowHeight="80px">
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <mat-label>İlgili YTM Seçiniz</mat-label>
+            <input
+              type="text"
+              placeholder="İlgili YTM Seçiniz"
+              matInput
+              [formControl]="filterFormElements.ilgiliYTM"
+              [matAutocomplete]="autoAnaUnite"
+            />
+            <mat-autocomplete
+              #autoAnaUnite="matAutocomplete"
+              [displayWith]="displayFnIlgiliYTM"
+            >
+              <mat-option *ngFor="let iytm of ilgiliYTM" [value]="iytm">
+                {{ iytm.ilgiliYTMAdi }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <input
+              name="paxNumarasi"
+              matInput
+              placeholder="Pax Numarası"
+              [formControl]="filterFormElements.paxNumarasi"
+            />
+            <mat-error *ngIf="filterForm.get('paxNumarasi')?.hasError('max')"
+              >Pax Numarası Hatalı</mat-error
+            >
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button
+            mat-raised-button
+            style="background-color: #369a05; color: white; margin: 0px 10px"
+          >
+            Ara
+          </button>
+          <button
+            type="button"
+            mat-raised-button
+            (click)="onTemizleClick()"
+            style="border: 1px solid #369a05"
+          >
+            Temizle
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card-content>
+</mat-card>

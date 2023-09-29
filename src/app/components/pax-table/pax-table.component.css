@@ -1,0 +1,8 @@
+.special{
+  background-color: aqua;
+}
+
+.centerLoading {
+  display: flex;
+  justify-content: center;
+}

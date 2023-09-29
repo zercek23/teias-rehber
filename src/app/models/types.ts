@@ -3,6 +3,15 @@ import {
   BaskanlikBilgileriResponse,
   MudurlukBilgileriResponse,
 } from './RehberServiceModels';
+import {
+  AboneTuruBilgileriResponse,
+  AboneYeriBilgileriResponse,
+  AdSoyadBilgileriResponse,
+  AltUniteBilgileriResponse,
+  AnaUniteBilgileriResponse,
+  IlgiliYTMBilgileriResponse,
+  TransformatorMerkeziBilgileriResponse,
+} from './PaxRehberServiceModels';
 
 export interface Kullanici {
   adi: string;
@@ -17,6 +26,17 @@ export interface Kullanici {
   personelKodu: number;
   soyadi: string;
   unvan: string;
+}
+
+export interface PaxKullanici {
+  lkp_sorumlu_ytm_qw_: string;
+  lkp_mulkiyet_qw_: string;
+  abone_tip_id_qw_: string;
+  pax_no: number;
+  lkp_ana_unite_qw_: string;
+  adi: string;
+  soyadi: string;
+  alt_unite_id_yeni_qw_: string;
 }
 
 export interface State {
@@ -47,6 +67,26 @@ export interface TableFilterQueryParams {
   dahili: string;
   kat: string;
   oda: string;
+}
+
+export interface PaxTableFilterQuery {
+  aboneTuru: AboneTuruBilgileriResponse;
+  anaUnite: AnaUniteBilgileriResponse;
+  altUnite: AltUniteBilgileriResponse;
+  transformatorMerkezi: TransformatorMerkeziBilgileriResponse;
+  adSoyad: AdSoyadBilgileriResponse;
+  ilgiliYTM: IlgiliYTMBilgileriResponse;
+  aboneYeri: AboneYeriBilgileriResponse;
+  paxNumarasi: number;
+}
+
+export interface PaxTableFilterQueryParams {
+  aboneTuru: string;
+  anaUnite: string;
+  altUnite: string;
+  transformatorMerkezi: string;
+  adSoyad: string;
+  paxNumarasi: string;
 }
 
 export interface FilterFormElements {

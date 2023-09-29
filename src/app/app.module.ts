@@ -25,6 +25,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgFor } from '@angular/common';
+import { PaxRehberiComponent } from './screens/pax-rehberi/pax-rehberi.component';
+import { PaxTableFilterComponent } from './components/pax-table-filter/pax-table-filter.component';
+import { PaxTableComponent } from './components/pax-table/pax-table.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { NgFor } from '@angular/common';
     TableComponent,
     TableFilterComponent,
     UnlessDirective,
+    PaxRehberiComponent,
+    PaxTableFilterComponent,
+    PaxTableComponent,
   ],
   imports: [
     BrowserModule,

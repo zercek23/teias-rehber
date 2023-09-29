@@ -52,7 +52,11 @@
               matInput
               placeholder="Adınızı Giriniz"
               [formControl]="filterFormElements.ad"
+              (ngModelChange)="adChange()"
             />
+            <mat-error *ngIf="filterForm.get('ad')?.hasError('maxLength')"
+              >İsimler</mat-error
+            >
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
@@ -63,6 +67,9 @@
               placeholder="Soyadınızı Giriniz"
               [formControl]="filterFormElements.soyadi"
             />
+            <mat-error *ngIf="filterForm.get('soyadi')?.hasError('maxLength')"
+              >Maksimum 100</mat-error
+            >
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
@@ -73,7 +80,9 @@
               placeholder="Dahili"
               [formControl]="filterFormElements.dahili"
             />
-            <!-- <mat-error *ngIf="filterForm.get('dahili')?.hasError('max')">Maksimum 999</mat-error> -->
+            <mat-error *ngIf="filterForm.get('dahili')?.hasError('max')"
+              >Maksimum 100</mat-error
+            >
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>

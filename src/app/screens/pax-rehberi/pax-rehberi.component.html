@@ -1,0 +1,13 @@
+<div style="padding: 20px">
+  <app-pax-table-filter
+    (buttonClicked)="getDataSourceWithQuery($event)"
+    (temizleButtonClicked)="filterFormClear($event)"
+  ></app-pax-table-filter>
+  <app-pax-table
+    [queryData]="queryData"
+    [getData]="getData"
+    [loading]="loading"
+    [totalCount]="totalCount"
+    [dataSource]="dataSource"
+  ></app-pax-table>
+</div>
